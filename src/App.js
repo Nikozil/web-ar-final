@@ -146,7 +146,11 @@ function App() {
       </button> */}
 
       {start ? (
-        <ChromoAppPageWithDouble width={width} height={height} />
+        <ChromoAppPageWithDouble
+          width={width}
+          height={height}
+          handlesetStart={setStart}
+        />
       ) : (
         <VideoChoosenPage setStart={setStart} />
       )}

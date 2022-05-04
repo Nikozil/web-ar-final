@@ -20,7 +20,7 @@ import NextVideo from '../resources/NextVideoDouble.mp4';
 import NeuronVideoV2 from '../resources/NeuronVideoGreenShort8S.mp4';
 import seeThru from 'seethru';
 
-function ChromoAppPageWithDouble({ width, height }) {
+function ChromoAppPageWithDouble({ width, height, handlesetStart }) {
   const targetRef = useRef();
   const sifruRef = useRef();
   const [hide, setHide] = useState(false);
@@ -78,6 +78,7 @@ function ChromoAppPageWithDouble({ width, height }) {
   const trailer = '';
   // const pauseRef = useRef(false);
   const [pause, setPause] = useState(false);
+  const [rotate, setRotate] = useState(false);
   const video = useRef();
   const [start, setStart] = useState(false);
   const [found, setFound] = useState(false);
@@ -160,6 +161,12 @@ function ChromoAppPageWithDouble({ width, height }) {
   //     video.style.setProperty('left', `0`);
   //   }
   // }, [width, height]);
+  const [oldWidth, setWidth] = useState(width);
+  useEffect(() => {
+    if (oldWidth !== width) {
+      window.location.reload(false);
+    }
+  }, [width, height]);
 
   // useEffect(() => {
   //   const video = document.getElementById('my-video');
@@ -198,7 +205,7 @@ function ChromoAppPageWithDouble({ width, height }) {
           preload="auto"
           // autoplay="true"
           id="my-video"
-          style={{ opacity: '0' }}
+          style={{ opacity: '0', visibility: 'hidden' }}
           width="1920"
           height="1080"
           // style={{ display: 'none' }}

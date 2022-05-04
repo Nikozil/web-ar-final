@@ -14,11 +14,13 @@ const useWindowHeight = () => {
 
   useEffect(() => {
     let vh = window.innerHeight * 0.01;
-    let vw = window.innerWidth * 0.01;
+    // let vw = window.innerWidth * 0.01;
+
+    // if (vw < vh) vw = null;
 
     // Then we set the value in the --vh custom property to the root of the document
     document.documentElement.style.setProperty('--vh', `${vh}px`);
-    document.documentElement.style.setProperty('--vw', `${vw}px`);
+    // document.documentElement.style.setProperty('--vw', `${vw}px`);
   }, [size]);
 
   return size;

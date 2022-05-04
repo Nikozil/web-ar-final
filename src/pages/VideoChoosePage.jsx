@@ -22,12 +22,7 @@ const VideoChoosenPage = ({ setStart }) => {
       </div>
 
       <div className="choosen-page__controls ">
-        <div
-          className="controls__btn"
-          style={{
-            padding: '5px',
-          }}
-          onClick={() => setStart(true)}>
+        <div className="controls__btn" onClick={() => setStart(true)}>
           Начать
         </div>
       </div>
