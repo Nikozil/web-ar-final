@@ -4,19 +4,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 // import { Box, Sphere, Entity } from 'react-aframe-ar';
 import '../App.css';
-// import video12 from './resources/test12.mp4';
-// import NeuronVideo from './resources/NeuronVideo.mp4';
-import NeuronVideoV2 from '../resources/NeuronVideoGreenShort8S.mp4';
-// import NeuronVideoV2 from '../resources/short.mp4';
-// import trailer from '../resources/NextVideo.mp4';
-import NextVideo from '../resources/NextVideo.mp4';
-import cardpng from '../resources/card.png';
-import card1111 from '../resources/card1111.mind';
-import GLChroma from 'gl-chromakey';
-
-// import example4 from './resources/example.mp4';
-
-import plane from '../resources/neuron2.jpg';
 import {
   FILTER_BETA,
   FILTER_MIN_CF,
@@ -24,11 +11,14 @@ import {
   MISS_TOLERANCE,
   WARMUP_TOLERANCE,
 } from '../constants/constants';
+// import example4 from './resources/example.mp4';
+import plane from '../resources/neuron2.jpg';
+import neuron2 from '../resources/neuron2.mind';
+// import video12 from './resources/test12.mp4';
+// import NeuronVideo from './resources/NeuronVideo.mp4';
+import NeuronVideoV2 from '../resources/NeuronVideoGreenShort8S.mp4';
 
-function ChromoAppPage({ preloadStatus, mark, substate, width, height }) {
-  const sifruRef = useRef();
-  const assetRef = useRef();
-  const planeRef = useRef();
+function ChromoAppPage({ width, height }) {
   const targetRef = useRef();
 
   const trailer = '';
@@ -40,7 +30,7 @@ function ChromoAppPage({ preloadStatus, mark, substate, width, height }) {
   const [focus, setFocus] = useState(false);
   const [end, setEnd] = useState(false);
 
-  const [isVideoLoad, setIsVideoLoad] = useState(false);
+  const [isVideoLoad, setIsVideoLoad] = useState(NeuronVideoV2);
 
   const handleNext = () => {
     setIsVideoLoad(trailer);
@@ -83,11 +73,6 @@ function ChromoAppPage({ preloadStatus, mark, substate, width, height }) {
   }, [isVideoLoad]);
 
   useEffect(() => {
-    if (preloadStatus) prefetch_file(NeuronVideoV2, onSuccess);
-    else setIsVideoLoad(NeuronVideoV2);
-  }, [preloadStatus]);
-
-  useEffect(() => {
     const container = document.querySelector('.main-container');
     console.log('videosadfsadsadsad', container);
 
@@ -101,76 +86,31 @@ function ChromoAppPage({ preloadStatus, mark, substate, width, height }) {
     }
   }, [width, height]);
 
-  useEffect(() => {
-    const video = document.getElementById('my-video');
-    const canvas = document.getElementById('my-canvas');
-    const chroma = new GLChroma(video, canvas);
-    // chroma.key([0, 0, 0]);
-    // chroma.key({ color: [0, 255, 0], tolerance: 0.3 });
+  // useEffect(() => {
+  //   const video = document.getElementById('my-video');
+  //   const canvas = document.getElementById('my-canvas');
+  //   const chroma = new GLChroma(video, canvas);
+  //   // chroma.key([0, 0, 0]);
+  //   // chroma.key({ color: [0, 255, 0], tolerance: 0.3 });
 
-    let frameId;
-    const startChroma = () => {
-      // chroma.key([0, 0, 0]);
+  //   let frameId;
+  //   const startChroma = () => {
+  //     // chroma.key([0, 0, 0]);
 
-      frameId = window.requestAnimationFrame(startChroma);
-      chroma.render();
-    };
-    const stopChroma = () => window.cancelAnimationFrame(frameId);
+  //     frameId = window.requestAnimationFrame(startChroma);
+  //     chroma.render();
+  //   };
+  //   const stopChroma = () => window.cancelAnimationFrame(frameId);
 
-    // link to <video> element
-    video.addEventListener('play', startChroma);
-    video.addEventListener('pause', stopChroma);
-    video.addEventListener('ended', stopChroma);
-  }, []);
-
-  function onSuccess(url) {
-    // video.current.src = url;
-    setIsVideoLoad(url);
-  }
-
-  function prefetch_file(
-    url,
-    fetched_callback,
-    progress_callback = () => {},
-    error_callback = () => {}
-  ) {
-    var xhr = new XMLHttpRequest();
-    console.log('url', url);
-    xhr.open('GET', url, true);
-    xhr.responseType = 'blob';
-
-    xhr.addEventListener(
-      'load',
-      function () {
-        if (xhr.status === 200) {
-          var URL = window.URL || window.webkitURL;
-          var blob_url = URL.createObjectURL(xhr.response);
-          fetched_callback(blob_url);
-        } else {
-          error_callback();
-        }
-      },
-      false
-    );
-
-    var prev_pc = 0;
-    xhr.addEventListener('progress', function (event) {
-      if (event.lengthComputable) {
-        var pc = Math.round((event.loaded / event.total) * 100);
-        if (pc !== prev_pc) {
-          prev_pc = pc;
-          progress_callback(pc);
-        }
-      }
-    });
-    console.log('xhr', xhr);
-    xhr.send();
-  }
+  //   // link to <video> element
+  //   video.addEventListener('play', startChroma);
+  //   video.addEventListener('pause', stopChroma);
+  //   video.addEventListener('ended', stopChroma);
+  // }, []);
 
   return (
     <>
-      <video
-        ref={video}
+      {/* <video
         preload="auto"
         // autoplay="true"
         id="my-video"
@@ -192,8 +132,8 @@ function ChromoAppPage({ preloadStatus, mark, substate, width, height }) {
           height: '1080px',
           // width: '100%',
           // height: '100%',
-        }}></canvas>
-      {!isVideoLoad ? (
+        }}></canvas> */}
+      {false ? (
         <div className={'loading__modal'}>
           <div className={'loading__container'}>
             <div className={'loading__text'}>Loading...</div>
@@ -227,9 +167,8 @@ function ChromoAppPage({ preloadStatus, mark, substate, width, height }) {
                   <button
                     id="example-start-button"
                     className="controls__btn"
-                    onClick={handleNext}
-                    // onClick={handleStart}
-                  >
+                    // onClick={handleNext}
+                    onClick={handleStart}>
                     Start
                   </button>
                 ) : (
@@ -251,7 +190,7 @@ function ChromoAppPage({ preloadStatus, mark, substate, width, height }) {
             // mindar-image={`filterMinCF:${filters.filterMinCF}; filterBeta: ${filters.filterBeta};warmupTolerance: ${filters.warmupTolerance};missTolerance: ${filters.missTolerance};interpolationFactor :10;imageTargetSrc: ${card1111};`}
             // mindar-image={`warmupTolerance: 0;missTolerance: 0; imageTargetSrc: ${mark};`}
 
-            mindar-image={`filterMinCF:${FILTER_MIN_CF}; filterBeta: ${FILTER_BETA};interpolationFactor:${INTERPOLATION_FACTOR};warmupTolerance: ${WARMUP_TOLERANCE};missTolerance: ${MISS_TOLERANCE}; imageTargetSrc: ${mark};`}
+            mindar-image={`filterMinCF:${FILTER_MIN_CF}; filterBeta: ${FILTER_BETA};interpolationFactor:${INTERPOLATION_FACTOR};warmupTolerance: ${WARMUP_TOLERANCE};missTolerance: ${MISS_TOLERANCE}; imageTargetSrc: ${neuron2};`}
             // mindar-image={`filterMinCF:0.00004; filterBeta: 0.00007;interpolationFactor:5;warmupTolerance: 3;missTolerance: 0; imageTargetSrc: ${mark};`}
             // mindar-image={`filterMinCF:0.004; filterBeta: 0.0007;warmupTolerance: 0;missTolerance: 0; imageTargetSrc: ${mark};`}
             // mindar-image={`filterMinCF:0.004; filterBeta: 0.7;warmupTolerance: 0;missTolerance: 0; imageTargetSrc: ${mark};`}
@@ -323,20 +262,7 @@ function ChromoAppPage({ preloadStatus, mark, substate, width, height }) {
                     // width="1.1475"
                     // height="0.675"
                   > */}
-              {substate && (
-                <a-plane
-                  src="#card"
-                  position="0 0 0"
-                  // position="0 0 0"
-                  // height="0.552"
-                  // width="1"
-                  opaciy="0.8"
-                  // height="0.485"
-                  height="0.421"
-                  width="1"
-                  // scale="0.99 0.99 0.99"
-                  rotation="0 0 0"></a-plane>
-              )}
+
               <a-plane
                 // position="0.24 -0.25 -0.2"
                 // position="0.24 -0.25 0.1"
@@ -345,7 +271,7 @@ function ChromoAppPage({ preloadStatus, mark, substate, width, height }) {
 
                 // position="0.22 -0.15 0"
                 // position="0.23 -0.14 0.1"
-                position={substate ? '0.23 -0.14 0.1' : '0.22 -0.15 0'}
+                position={'0.22 -0.15 0'}
                 // material="shader: chromakey; src: #assetvideo; color: 0.1 0.9 0.2"
                 width="1.1475"
                 height="0.675"
