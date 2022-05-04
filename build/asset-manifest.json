@@ -1,0 +1,36 @@
+{
+  "files": {
+    "main.css": "/static/css/main.ff7142ef.css",
+    "main.js": "/static/js/main.aa90dc09.js",
+    "static/js/787.fd2eba14.chunk.js": "/static/js/787.fd2eba14.chunk.js",
+    "static/media/NeuronVideoV2.mp4": "/static/media/NeuronVideoV2.bb5a9996d3581366e538.mp4",
+    "static/media/NextVideo.mp4": "/static/media/NextVideo.3a086f28f5d7f5b0ec9a.mp4",
+    "static/media/pinball.mind": "/static/media/pinball.82ee965a072e39019239.mind",
+    "static/media/stones.mind": "/static/media/stones.0e5b281d31677dba6940.mind",
+    "static/media/kolor.mp4": "/static/media/kolor.ffd2b555aa3cb981a319.mp4",
+    "static/media/neuronhq.mind": "/static/media/neuronhq.e08cae4d3c156f756af2.mind",
+    "static/media/pinball.jpg": "/static/media/pinball.c8b3a437890f0702f880.jpg",
+    "static/media/NeuronVideoGreenShort8S.mp4": "/static/media/NeuronVideoGreenShort8S.ac3aaaa2d29985f672db.mp4",
+    "static/media/shortNeuron.mind": "/static/media/shortNeuron.d029f2308ff3eb0442ad.mind",
+    "static/media/neuron2.mind": "/static/media/neuron2.c6c69703cc54ede43c20.mind",
+    "static/media/neuronOnly.mind": "/static/media/neuronOnly.767f2a6fc0ac0580276b.mind",
+    "static/media/stones.jpg": "/static/media/stones.f271d8d8ce025f843456.jpg",
+    "static/media/card1111.mind": "/static/media/card1111.1ecf0b36e2795512d2a1.mind",
+    "static/media/default1.mind": "/static/media/default1.1ecf0b36e2795512d2a1.mind",
+    "static/media/hiro.mind": "/static/media/hiro.424ca4cc408f59ab8dd2.mind",
+    "static/media/hiro.png": "/static/media/hiro.086d24b658cbc35ddc0a.png",
+    "static/media/neuron2.jpg": "/static/media/neuron2.28e321f9bbd4d09e0333.jpg",
+    "static/media/shortNeuron.jpg": "/static/media/shortNeuron.1f25a58b51a1de572ea6.jpg",
+    "static/media/neuronOnly.png": "/static/media/neuronOnly.5a343652f82a7ccd7a5a.png",
+    "static/media/card.png": "/static/media/card.06cb9111a8e32627db6b.png",
+    "static/media/default.jpg": "/static/media/default.3fc4bf4f8ccab7abde97.jpg",
+    "index.html": "/index.html",
+    "main.ff7142ef.css.map": "/static/css/main.ff7142ef.css.map",
+    "main.aa90dc09.js.map": "/static/js/main.aa90dc09.js.map",
+    "787.fd2eba14.chunk.js.map": "/static/js/787.fd2eba14.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ff7142ef.css",
+    "static/js/main.aa90dc09.js"
+  ]
+}

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script> -->
+
+    <!-- <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.0.0/dist/mindar-image.prod.js"></script>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.0.0/dist/mindar-image-aframe.prod.js"></script> -->
+
+    <!-- <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script> -->
+    <!-- <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script> -->
+    <!-- <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script> -->
+    <!-- <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script> -->
+    <!-- <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script> -->
+
+    <!-- <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script> -->
+
+    <!-- <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script> -->
+    <!-- <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.0/aframe/build/aframe-ar.js"></script> -->
+
+    <!-- <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script> -->
+
+    <!-- <script src="https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar.js"></script> -->
+    <!-- <script src="https://raw.githack.com/AR-js-org/AR.js/3.0.0/three.js/build/ar.js"></script> -->
+    <!-- <script src="https://raw.githack.com/AR-js-org/AR.js/3.3.3/aframe/build/aframe-ar.js"></script> -->
+    <!-- <script src="https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar.js"></script> -->
+    <!-- <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script> -->
+    <!-- <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script> -->
+
+    <!-- <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.3/dist/mindar-image.prod.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/dist/mindar-image.prod.js"></script> -->
+    <!-- <script src="mindar-image.prod.js"></script> -->
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <!-- <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script> -->
+
+    <!-- <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.3/dist/mindar-image-aframe.prod.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/dist/mindar-image-aframe.prod.js"></script> -->
+    <!-- <script src="mindar-image-aframe.prod.js"></script> -->
+
+    <script src="https://unpkg.com/aframe-chromakey-material/dist/aframe-chromakey-material.min.js"></script>
+
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>React App</title>
+  </head>
+  <body>
+    <script>
+      AFRAME.registerComponent('smooth', {
+        init: function () {
+          this.target = document.querySelector('#target');
+          this.prevPosition = null; // initially there is no position or rotation
+          this.prevRotation = null;
+        },
+
+        tick: function () {
+          this.prevPosition = this.el.object3D.position;
+          this.prevRotation = this.el.object3D.rotation;
+          // use the previous values to get an approximation
+          // this.target.object3D.position.lerp(this.prevPosition, 0.1);
+
+          // // this (below) may seem ugly, but the rotation is a euler, not a THREE.Vector3,
+          // // so to use the lerp function i'm doing some probably unnecessary conversions
+          // let rot = this.el.object3D.rotation
+          //   .toVector3()
+          //   .lerp(this.prevRotation, 0.1);
+          // this.el.object3D.rotation.setFromVector3(rot);
+
+          // update the values
+
+          // console.log(this.prevPosition, this.prevRotation);
+          console.log('el', this.el.object3D.position);
+          console.log('target', this.target.object3D.position);
+        },
+      });
+      // AFRAME.registerComponent('listener', {
+      //   init: function () {
+      //     this.target = document.querySelector('#target'); // your video
+      //     this.prevPosition = null; // initially there is no position or rotation
+      //     this.prevRotation = null;
+      //   },
+
+      //   tick: function () {
+      //     if (this.el.object3D.visible) {
+      //       this.target.setAttribute('visible', 'true');
+
+      //       if (!this.prevPosition && !this.prevRotation) {
+      //         // there are no values to lerp from - set the initial values
+      //         this.target.setAttribute(
+      //           'position',
+      //           this.el.getAttribute('position')
+      //         );
+      //         this.target.setAttribute(
+      //           'rotation',
+      //           this.el.getAttribute('rotation')
+      //         );
+      //       } else {
+      //         // use the previous values to get an approximation
+      //         this.target.object3D.position.lerp(this.prevPosition, 0.1);
+
+      //         // this (below) may seem ugly, but the rotation is a euler, not a THREE.Vector3,
+      //         // so to use the lerp function i'm doing some probably unnecessary conversions
+      //         let rot = this.target.object3D.rotation
+      //           .toVector3()
+      //           .lerp(this.prevRotation, 0.1);
+      //         this.target.object3D.rotation.setFromVector3(rot);
+      //       }
+      //       // update the values
+      //       this.prevPosition = this.el.object3D.position;
+      //       this.prevRotation = this.el.object3D.rotation;
+      //       console.log(this.prevPosition, this.prevRotation);
+      //     } else {
+      //       // the marker dissapeared - reset the values
+      //       this.target.setAttribute('visible', 'false');
+      //       this.prevPosition = null;
+      //       this.prevRotation = null;
+      //     }
+      //   },
+      // });
+      // AFRAME.registerComponent('vidhandler', {
+      //   init: function () {
+      //     this.toggle = false;
+      //     document.querySelector('#canvasvideo').pause(); //reference to the video
+      //   },
+      //   tick: function () {
+      //     if (document.querySelector('a-video').object3D.visible == true) {
+      //       if (!this.toggle) {
+      //         this.toggle = true;
+      //         document.querySelector('#canvasvideo').play();
+      //       }
+      //     } else {
+      //       this.toggle = false;
+      //       document.querySelector('#canvasvideo').pause();
+      //     }
+      //   },
+      // });
+      AFRAME.registerComponent('vidhandler', {
+        init: function () {
+          this.toggle = false;
+          document.querySelector('#assetvideo').pause(); //reference to the video
+        },
+        tick: function () {
+          if (document.querySelector('a-entity').object3D.visible == true) {
+            if (!this.toggle) {
+              this.toggle = true;
+              document.querySelector('#assetvideo').play();
+            }
+          } else {
+            this.toggle = false;
+            document.querySelector('#assetvideo').pause();
+          }
+        },
+      });
+      // AFRAME.registerComponent('vidhandler', {
+      //   init: function () {
+      //     this.toggle = false;
+      //     document.querySelector('#assetvideo').pause(); //reference to the video
+      //   },
+      //   tick: function () {
+      //     if (document.querySelector('a-video').object3D.visible == true) {
+      //       if (!this.toggle) {
+      //         this.toggle = true;
+      //         document.querySelector('#assetvideo').play();
+      //       }
+      //     } else {
+      //       this.toggle = false;
+      //       document.querySelector('#assetvideo').pause();
+      //     }
+      //   },
+      // });
+      // AFRAME.registerComponent('vidhandler', {
+      //   init: function () {
+      //     this.toggle = false;
+      //     document.querySelector('#assetvideo').pause(); //reference to the video
+      //   },
+      //   tick: function () {
+      //     if (document.querySelector('a-marker').object3D.visible == true) {
+      //       if (!this.toggle) {
+      //         this.toggle = true;
+      //         document.querySelector('#assetvideo').play();
+      //       }
+      //     } else {
+      //       this.toggle = false;
+      //       document.querySelector('#assetvideo').pause();
+      //     }
+      //   },
+      // });
+      AFRAME.registerComponent('live-canvas', {
+        dependencies: ['geometry', 'material'],
+
+        schema: {
+          src: { type: 'string', default: '#id' },
+        },
+
+        init() {
+          if (!document.querySelector(this.data.src)) {
+            console.error('no such canvas');
+            return;
+          }
+          this.el.setAttribute('material', { src: this.data.src });
+        },
+
+        tick() {
+          var el = this.el;
+          var material;
+
+          material = el.getObject3D('mesh').material;
+          if (!material.map) {
+            console.error('no material map');
+            this.el.removeAttribute('live-canvas');
+            return;
+          }
+          material.map.needsUpdate = true;
+        },
+      });
+
+      AFRAME.registerComponent('canvas-updater', {
+        dependencies: ['geometry', 'material'],
+
+        tick: function () {
+          var el = this.el;
+          var material;
+
+          material = el.getObject3D('mesh').material;
+          if (!material.map) {
+            return;
+          }
+          material.map.needsUpdate = true;
+        },
+      });
+    </script>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
+</html>
