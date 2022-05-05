@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.8a60a1d4.css",
-    "main.js": "/static/js/main.82ebfcba.js",
+    "main.css": "/static/css/main.1811a04c.css",
+    "main.js": "/static/js/main.71dd60a9.js",
     "static/js/787.fd2eba14.chunk.js": "/static/js/787.fd2eba14.chunk.js",
     "static/media/NextVideoDouble.mp4": "/static/media/NextVideoDouble.84a69e4fa12d76799ade.mp4",
     "static/media/NeuronVideoGreenShort8S.mp4": "/static/media/NeuronVideoGreenShort8S.ac3aaaa2d29985f672db.mp4",
     "static/media/neuron2.mind": "/static/media/neuron2.c6c69703cc54ede43c20.mind",
     "static/media/neuron2.jpg": "/static/media/neuron2.28e321f9bbd4d09e0333.jpg",
     "index.html": "/index.html",
-    "main.8a60a1d4.css.map": "/static/css/main.8a60a1d4.css.map",
-    "main.82ebfcba.js.map": "/static/js/main.82ebfcba.js.map",
+    "main.1811a04c.css.map": "/static/css/main.1811a04c.css.map",
+    "main.71dd60a9.js.map": "/static/js/main.71dd60a9.js.map",
     "787.fd2eba14.chunk.js.map": "/static/js/787.fd2eba14.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.8a60a1d4.css",
-    "static/js/main.82ebfcba.js"
+    "static/css/main.1811a04c.css",
+    "static/js/main.71dd60a9.js"
   ]
 }

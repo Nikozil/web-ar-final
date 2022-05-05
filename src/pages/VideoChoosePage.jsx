@@ -24,14 +24,14 @@ const VideoChoosenPage = ({ setStart }) => {
 
       <div className="choosen-page__controls ">
         {/* <div className="controls__btn" onClick={() => setStart(true)}> */}
-        <div
+        <button
           className="controls__btn"
           onClick={() => {
             window.location.pathname = '/camera';
             // window.history.pushState('look ma!', undefined, '/camera');
           }}>
           Начать
-        </div>
+        </button>
       </div>
     </div>
   );
