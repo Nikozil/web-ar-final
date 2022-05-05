@@ -1,4 +1,5 @@
 import React from 'react';
+
 import neuron2 from '../resources/neuron2.jpg';
 
 const VideoChoosenPage = ({ setStart }) => {
@@ -22,7 +23,13 @@ const VideoChoosenPage = ({ setStart }) => {
       </div>
 
       <div className="choosen-page__controls ">
-        <div className="controls__btn" onClick={() => setStart(true)}>
+        {/* <div className="controls__btn" onClick={() => setStart(true)}> */}
+        <div
+          className="controls__btn"
+          onClick={() => {
+            window.location.pathname = '/camera';
+            // window.history.pushState('look ma!', undefined, '/camera');
+          }}>
           Начать
         </div>
       </div>

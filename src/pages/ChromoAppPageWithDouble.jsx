@@ -28,7 +28,7 @@ function ChromoAppPageWithDouble({ width, height, handlesetStart }) {
   useEffect(() => {
     let timerId = setInterval(() => {
       const target = document.querySelector('#my-video');
-      console.log('targetoutside', target);
+      // console.log('targetoutside', target);
 
       if (target) {
         clearInterval(timerId);
@@ -73,7 +73,7 @@ function ChromoAppPageWithDouble({ width, height, handlesetStart }) {
           canvas.style.setProperty('height', 'auto');
         }
       });
-  }, [width, height]);
+  }, [width, height, sifruRef.current]);
 
   const trailer = '';
   // const pauseRef = useRef(false);
@@ -163,8 +163,14 @@ function ChromoAppPageWithDouble({ width, height, handlesetStart }) {
   // }, [width, height]);
   const [oldWidth, setWidth] = useState(width);
   useEffect(() => {
-    if (oldWidth !== width) {
-      window.location.reload(false);
+    console.log(oldWidth, width);
+    if (oldWidth === 0) {
+      setWidth(width);
+    }
+    if (oldWidth !== 0 && oldWidth !== width) {
+      // window.location.reload(false);
+      window.location.pathname = '/camera';
+      console.log('reload');
     }
   }, [width, height]);
 
@@ -192,30 +198,40 @@ function ChromoAppPageWithDouble({ width, height, handlesetStart }) {
 
   return (
     <>
-      <div
-        style={{
-          width: '100%',
-          height: '100%',
-          position: 'absolute',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}>
-        <video
-          preload="auto"
-          // autoplay="true"
-          id="my-video"
-          style={{ opacity: '0', visibility: 'hidden' }}
-          width="1920"
-          height="1080"
-          // style={{ display: 'none' }}
+      {' '}
+      {false ? (
+        <div className={'loading__modal'} style={{ zIndex: 5000 }}>
+          <div className={'loading__container'}>
+            <div className={'loading__text'}>Loading...</div>
+            <div className={'loading__spin'}></div>
+          </div>
+        </div>
+      ) : (
+        <>
+          <div
+            style={{
+              width: '100%',
+              height: '100%',
+              position: 'absolute',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            <video
+              preload="auto"
+              // autoplay="true"
+              id="my-video"
+              style={{ opacity: '0', visibility: 'hidden' }}
+              width="1920"
+              height="1080"
+              // style={{ display: 'none' }}
 
-          webkit-playsinline
-          playsinline>
-          <source src={NextVideo} type="video/mp4" />
-        </video>
-      </div>
-      {/*  <canvas
+              webkit-playsinline
+              playsinline>
+              <source src={NextVideo} type="video/mp4" />
+            </video>
+          </div>
+          {/*  <canvas
         id="my-canvas"
         style={{
           position: 'absolute',
@@ -225,15 +241,7 @@ function ChromoAppPageWithDouble({ width, height, handlesetStart }) {
           // width: '100%',
           // height: '100%',
         }}></canvas> */}
-      {false ? (
-        <div className={'loading__modal'}>
-          <div className={'loading__container'}>
-            <div className={'loading__text'}>Loading...</div>
-            <div className={'loading__spin'}></div>
-          </div>
-        </div>
-      ) : (
-        <>
+
           <div className={'indicator'}>
             {' '}
             {focus ? (
